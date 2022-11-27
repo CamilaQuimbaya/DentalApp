@@ -1,5 +1,52 @@
 <template>
-<div><img src="https://i.pinimg.com/564x/85/fe/32/85fe32390677a822b66719f5a7f77724.jpg" alt=""></div>
+    <div class="cont">
+        <h3 class="tittle">DentalApp</h3>
+    </div>
+<div class="container cont">
+   <div id="carouselExampleCaptions" class="carousel slide carrou" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner carrob">
+    <div class="carousel-item active">
+      <img src="https://i.pinimg.com/564x/e1/82/a4/e182a40f9db16e58a4632ea867839409.jpg" class="d-block w-100 carrouimg" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="spantb">
+            Somos los mejores para tu salud bucal 
+        </span>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.pinimg.com/564x/00/81/94/008194bf3e9849c49d847eae84d26eb5.jpg" class="d-block w-100 carrouimg" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="spantb">
+            con los mejores profesionales
+        </span>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.pinimg.com/564x/18/a7/47/18a747f72baf353b787d34d89ef38e5e.jpg" class="d-block w-100 carrouimg" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="spantb">
+           afiliate ahora y obtén los beneficios
+        </span>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  <div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -11,4 +58,35 @@
 </script>
 
 <style>
+.carrouimg{
+    filter: blur(3px);
+}
+.tittle{
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color: #696969;
+}
+.carrob{
+    border-radius: 80px;
+   
+}
+.spantb{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20%;
+    padding: 20px;
+    border-radius: 60px;
+    background-color: rgba(0, 174, 255, 0.753);
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carrou{
+    width: 50vw;
+    margin-bottom: 5%;
+    border-radius: 50px;
+}
 </style>
