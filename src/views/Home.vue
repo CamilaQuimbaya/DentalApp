@@ -17,32 +17,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <button class="cta">
+              <RouterLink class="cta nav-link" to="/menu">
                 <span>Home</span>
                 <svg viewBox="0 0 13 10" height="10px" width="15px">
                   <path d="M1,5 L11,5"></path>
                   <polyline points="8 1 12 5 8 9"></polyline>
                 </svg>
-              </button>
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <button class="cta">
+              <RouterLink class="cta nav-link" to="/aboutus">
                 <span>Nosotros</span>
                 <svg viewBox="0 0 13 10" height="10px" width="15px">
                   <path d="M1,5 L11,5"></path>
                   <polyline points="8 1 12 5 8 9"></polyline>
                 </svg>
-              </button>
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <button class="cta nav-link" to="/dentist">
+              <RouterLink class="cta nav-link" to="/dentist">
                 <span>Nuestros médicos
                 </span>
                 <svg viewBox="0 0 13 10" height="10px" width="15px">
                   <path d="M1,5 L11,5"></path>
                   <polyline points="8 1 12 5 8 9"></polyline>
                 </svg>
-            </button>
+              </RouterLink>
             </li>
           </ul>
           <div class="d-flex">
@@ -51,20 +51,16 @@
         </div>
       </div>
     </nav>
-    <LayoutVue />
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script>
-import LayoutVue from '../components/Layout.vue';
 import { RouterLink, RouterView } from 'vue-router'
 
 export default {
   data (){
     return {}
-  },
-  components: {
-    LayoutVue,
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
 <div>
-    {{mensaje}}
+   <img src="../assets/logoPsi.png" alt="">
 </div>
 </template>
 

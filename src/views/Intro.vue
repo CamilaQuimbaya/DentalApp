@@ -1,6 +1,6 @@
 <template>
     <div class="intro">
-    <img class="introimg" src="../assets/logosi.svg" alt="logo" />
+        <img class="introimg" src="../assets/logosi.svg" alt="logo"/>
   </div>
   <div class="loadercontainer">
     <div class="loader">
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { RouterLink, RouterView } from 'vue-router';
 export default {
   data (){
     return {}
