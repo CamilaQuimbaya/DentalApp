@@ -12,12 +12,14 @@
 <script>
 import IntroVue from './views/Intro.vue';
 import { defineAsyncComponent } from "vue";
-import dentist from "./views/Home.vue"
+
 
 export default {
+  texto:'Prueba',
   data (){
     return {
       mensaje: 'hola mundo',
+      
     }
   },
   components:{
@@ -26,7 +28,7 @@ export default {
       () =>
         new Promise((resolve,reject) => {
           setTimeout(() => {
-            resolve(dentist);
+            resolve(import("./views/Home.vue"));
           }, 3500);
         })
     )

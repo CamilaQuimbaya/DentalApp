@@ -1,5 +1,6 @@
 <template>
     <div class="container conti">
+
         <button @click="consultarMedicos" class="btn btn-1">Ver médicos disponibles</button>
         <div class="card" v-for="medico in medicos">
         <div class="card-info">
@@ -28,10 +29,16 @@
 
 <script>
  export default {
+  props: ['msg'],
+  data: function() {
+      return {
+        authenticated:false
+      };
+    },
   data (){
     return {
         url: 'http://150.136.92.127:8080/dentalapp/api/medicos',
-        medicos: []
+        medicos: [],
     }
   },
   methods:{
@@ -55,7 +62,7 @@
                 throw error
             }
         })
-    }
+    },
   }
 };
 </script>

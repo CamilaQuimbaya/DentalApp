@@ -59,86 +59,88 @@
 
 export default {
   data() {
-    return {
+    return {      
       titulo: 'Pacientes',
-      url: 'http://150.136.92.127:8080/dentalapp/api/pacientes/correo',
       paciente: "",
       correo: "",
       clave: "",
-      paciente2: "",
       mensaje: "hola loquita",
-      token:''
+      token:"",
+      paciente2:""
     }
   },
   methods: {
-    consultarPaciente() {
-      console.log(this.token)
-      const opciones = {
-        method: 'GET',
-        headers: {
-          'Content-Type': "Application/json",
-          'Authorization':"Bearer "+this.token
-        }
-      };
-      const url2 = 'http://150.136.92.127:8080/dentalapp/api/pacientes/clave/' + this.correo + '/' + this.clave
-      fetch(url2, opciones).then(async (response) => {
-        if (response.ok) {
-          this.paciente = await response.json()
-          console.log(this.paciente)
-          if (this.paciente == null) {
-            alert("Correo no encontrado")
-          } else {
-            if (this.paciente.clave == this.clave) {
-              console.log(this.paciente)
-              alert(this.paciente.nombre)
-            } else {
-              alert("Clave Incorrecta")
-            }
-          }
-        } else {
-          const error = new Error(response.statusText)
-          error.json = response.json()
-          console.log(error.message)
-          alert("Correo o contraseña incorrectos")
-        }
-      })
-    },
-    solicitarToken() {
-      const opciones = {
-        method: 'POST',
-        headers: {
-          'Content-Type': "Application/json",
-          'Cache-Control': 'no-cache',
+    thingClicked: function () {
+            this.$emit('thingHasChanged', $this.msg);
         },
-        body: JSON.stringify({
-          id:3,
-          nombre:'Luz Yaneth Gomez',
-          documento:'1012388310',
-          telefono:'3118544184',
-          direccion:'Cra 78 #  00-00',
-          centroMedico:'Bogota',
-          correo: 'correo3@correo.com',
-          clave: '12345'
-        })
-      };
-      const urlToken = "http://150.136.92.127:8080/dentalapp/api/pacientes/token"
-      fetch(urlToken, opciones).then(async (response) => {
-        if (response.ok) {
-          this.token = await response.json()
-          console.log(this.token)
+  consultarPaciente() {
+    const opcion = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'Application/json',
+        'Authorization': 'Bearer ' + this.token
+      }
+    };
+    //this.solicitarToken()
+    //const url2 = 'http://150.136.92.127:8080/dentalapp/api/pacientes/clave/body'
+    const url2 = 'http://150.136.92.127:8080/dentalapp/api/pacientes/clave/' + this.correo + '/' + this.clave
+    fetch(url2, opcion).then(async (response) => {
+      if (response.ok) {
+        this.paciente = await response.json()
+        if (this.paciente == null) {
+          alert("Correo no encontrado")
         } else {
-          const error = new Error(response.statusText);
-          error.json = response.json()
-          console.log(error.message)
-          throw error
+          if (this.paciente.clave == this.clave) {              
+            this.msg=true
+            this.$emit("authenticated", true);
+            this.$router.replace({name:"agendapatient"})
+          } else {
+            this.msg=false
+            alert("Clave Incorrecta")
+            this.$emit("authenticated", true);
+          }
         }
-      })
-    }
+      } else {
+        const error = new Error(response.statusText)
+        console.log(error.message)
+        alert("Correo o contraseña incorrectos")
+      }
+    })
   },
-  beforeMount(){
-      this.solicitarToken()
-    }
+  solicitarToken() {
+    const opciones = {
+      method: 'POST',
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': ''
+      },
+      body: JSON.stringify({
+        correo: 'correo3@correo.com',
+        clave: '12345'
+      })
+    };
+    const urlToken = "http://150.136.92.127:8080/dentalapp/api/pacientes/token"
+    //const urlToken ='http://localhost:9011/api/pacientes/token'
+    fetch(urlToken, opciones).then(async (response) => {
+      if (response.ok) {
+        const respuesta = await response.json()
+        this.token = respuesta.token
+        console.log(this.token)
+      } else {
+        const error = new Error(response.statusText);
+        error.json = response.json()
+        console.log(error.message)
+        throw error
+      }
+    })
+  }
+},
+beforeMount() {
+  this.solicitarToken()
+}
+
 };
+
 </script>
 
 <style>

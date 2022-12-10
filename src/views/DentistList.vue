@@ -3,18 +3,23 @@
      <h3 class="tittle">Nuestros Médicos</h3>
     <div>
     </div>
-  </div>
+  </div>  
   <DentistCard />
   </template>
   
   <script>
-   import DentistCard from '../components/DentistCard.vue'
+import DentistCard from '../components/DentistCard.vue'   
+
   export default {
-    data (){
-      return {mensaje:"hola loquita"}
+    props:[],
+    data: function (){
+      return {
+        mensaje:"hola loquita",
+        msg:''
+      }
     },
     components: {
-      DentistCard,
+      DentistCard,      
     },
   };
   </script>

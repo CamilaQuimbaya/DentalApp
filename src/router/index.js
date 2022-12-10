@@ -41,6 +41,12 @@ const router = createRouter({
             path: '/afiliate',
             name:'afiliate',
             component: ()=> import('../views/Afiliate.vue')
+        },
+
+        {
+            path: '/agendapatient',
+            name:'agendapatient',
+            component: ()=> import('../views/AgendaPatient.vue')
         }
     ]
 })
